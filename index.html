@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(0, 0, 0);
+            background-color: #000000;
+        }
+        .login-container {
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            margin-top: 10%;
+            margin-left: 40%;
+            background-color: rgb(105, 101, 101);
+            box-shadow: 10px 4px 8px rgba(216, 215, 215, 0.1);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .login-container:hover {
+            box-shadow: 14px 8px 5px rgba(255, 253, 253, 0.1);
+            transform: translateY(-10px);
+            cursor: pointer;
+        }
+        .login-container h2 {
+            margin: 0 0 20px 0;
+            text-align: center;
+            text-decoration: underline;
+        }
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px solid white;
+            border: 3px solid #000000;
+            border-radius: 20px;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 5px 8px 10px rgb(0, 0, 0);
+        }
+        .login-container input:hover { 
+            box-shadow: 5px 8px 10px rgb(255, 255, 255);
+        }
+        .login-container button {
+            width: 30%;
+            margin-top: 60px;
+            margin-left: 5px;
+            padding: 10px;
+            font-family: cursive;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 5px 8px 10px rgb(0, 0, 0);
+            transition: all 0.5s ease;
+        }
+        .login-container button:hover {
+            background-color: #ffffff;
+            box-shadow: 14px 8px 5px rgba(255, 253, 253, 0.1);
+            transform: translateY(-10px);
+            color: black;
+        }
+        .forget-password { 
+            font-size: 16px;
+            font-weight: bolder;
+            margin-left: 20px;
+            border-radius: 20px;
+        }
+        p4 a { 
+            color: rgb(24, 30, 50);
+        }
+    </style>
+    <script src="popup-pro.js"></script>
+    <script>
+        function validateLogin() {
+            const username = document.querySelector('input[type="text"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+
+            if (!username || !password) {
+                PopupPro.show({
+                    title: 'Input Error',
+                    message: 'Please fill in both username and password.',
+                    backgroundColor: '#ffcccb',
+                    textColor: '#000',
+                    width: '300px',
+                    borderRadius: '10px',
+                    buttons: [
+                        {
+                            text: 'Retry',
+                            style: 'default',
+                            onClick: function() {
+                                console.log('Retry button clicked');
+                            }
+                        }
+                    ]
+                });
+            } else if (username === 'admin' && password === '123') {
+                PopupPro.show({
+                    title: 'Login Successful',
+                    message: 'Welcome, Admin!',
+                    backgroundColor: '#d4edda',
+                    textColor: '#155724',
+                    width: '300px',
+                    borderRadius: '10px',
+                    buttons: [
+                        {
+                            text: 'OK',
+                            style: 'default',
+                            onClick: function() {
+                                console.log('OK button clicked');
+                                // Redirect to dashboard or another page if needed
+                            }
+                        }
+                    ]
+                });
+            } else {
+                PopupPro.show({
+                    title: 'Invalid Login',
+                    message: 'Invalid username or password. Please try again.',
+                    backgroundColor: '#f8d7da',
+                    textColor: '#721c24',
+                    width: '300px',
+                    borderRadius: '10px',
+                    buttons: [
+                        {
+                            text: 'Retry',
+                            style: 'default',
+                            onClick: function() {
+                                console.log('Retry button clicked');
+                            }
+                        },
+                        {
+                            text: 'Register Now',
+                            style: 'default',
+                            onClick: function() {
+                                console.log('Register Now button clicked');
+                                window.location.href = 'register.html'; // Redirect to registration page
+                            }
+                        }
+                    ]
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Form</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="button" onclick="validateLogin()">Login</button>
+        <br>
+        <br>
+
+        <p4 class="forget-password">Forget your password ?? <a href="#">Reset Now</a></p4>
+    </div>
+</body>
+</html>
